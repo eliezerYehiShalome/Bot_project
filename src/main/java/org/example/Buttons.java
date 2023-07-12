@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Buttons extends JPanel {
-    private final int CHECK_BOX_WIDTH = 300;
+    private final int CHECK_BOX_WIDTH = 100;
     private final int CHECK_BOX_HEIGHT = 50;
     private final int CHECK_BOX_X = 600;
     private int checkBoxY = 100;
     private int counter = 0;
     private UserStatistics userStatistics = new UserStatistics();
-    private HistoryActivity HistoryActivity = new HistoryActivity();
+    private HistoryActivity button = new HistoryActivity();
     private graph graph = new graph();
     private JLabel label = new JLabel();
 
@@ -54,16 +54,30 @@ public class Buttons extends JPanel {
         }
         Font font = new Font("avi", Font.BOLD, 21);
         Font fontForUserStatistics = new Font("avjji", Font.BOLD, 14);
-        userStatistics.setBounds(-60, 20, 300, 80);
-        userStatistics.setFont(fontForUserStatistics);
+        userStatistics.setBounds(1, 20, 300, 180);
+        userStatistics.setFont(font);
         add(userStatistics);
-        HistoryActivity.setBounds(20, 120, 400, 20);
-        HistoryActivity.setFont(fontForUserStatistics);
-        add(HistoryActivity);
+
+
+
+
         label.setText("<html>Choose three activities </html>");
         label.setBounds(CHECK_BOX_X - 58, 6, 300, 80);
         label.setFont(font);
         this.add(label);
+
+        JButton button=new JButton("History");
+        button.setFont(font);
+        button.setBackground(Color.CYAN);
+        button.setBounds(300, 12, 200, 100);
+        button.addActionListener((e -> {
+
+            HistoryActivity historyActivity= new HistoryActivity();
+            historyActivity.setVisible(true);
+
+        }));
+        add(button);
+
     }
 
     @Override

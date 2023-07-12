@@ -12,8 +12,9 @@ public class Window extends JFrame {
         this.setLocationRelativeTo(null);
         this.setLayout(new BorderLayout());
         Buttons buttons = new Buttons();
-        this.add(buttons);
+         this.add(buttons);
         this.setVisible(true);
+
     }
 
     public static final int WIDTH = 800;

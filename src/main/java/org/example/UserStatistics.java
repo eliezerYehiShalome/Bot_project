@@ -10,6 +10,8 @@ public class UserStatistics extends JPanel {
 
     public UserStatistics() {
         label = new JLabel();
+        label.setFont(label.getFont().deriveFont(20.0f)); // הגדלת גודל הגופן ל-20
+
         this.add(label);
         treed();
     }

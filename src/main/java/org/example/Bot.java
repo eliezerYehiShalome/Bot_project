@@ -14,11 +14,21 @@ public class Bot extends TelegramLongPollingBot {
     private static Date date;
     private static List<Date> dates = new ArrayList<>();
     private static List<String> activity = new ArrayList<>();
+
+     static List<String> lastTenactivityForHistory = new ArrayList<>();
+
     private static List<String> userNames = new ArrayList<>();
     private static List<String> x;
     private static int counterRequests = 0;
     private static String popularActivity;
     private static String popularUserName;
+
+     static int numberCunt=0;
+     static int activityCunt=0;
+     static int jokeCunt=0;
+    static int catFactCunt=0;
+     static int quoteCunt=0;
+
     private static String selectedActivity;
 
     public String getUserName() {
@@ -46,32 +56,37 @@ public class Bot extends TelegramLongPollingBot {
         this.userName = update.getMessage().getFrom().getFirstName() + " " + update.getMessage().getFrom().getLastName();
         if (update.getMessage().getText().equals("/start")) {
             counterRequests++;
-            sendMessageForMe(sendMessage, "chs");
+            sendMessageForMe(sendMessage, "chose");
             update.getMessage().setText(null);
         } else {
             if (update.getMessage().getText().equals("Joke")) {
                 saveDataForMe("JOKE");
                 sendMessageForMe(sendMessage, apiClient.getACTIVITY());
+                this.jokeCunt++;
 
 
             } else if (update.getMessage().getText().equals("CatFact")) {
                 saveDataForMe("CAT_FACT");
+                this.catFactCunt++;
 
 
                 sendMessageForMe(sendMessage, apiClient.getCAT_FACT());
             } else if (update.getMessage().getText().equals("Quote")) {
                 saveDataForMe("QUOTE");
+                this.quoteCunt++;
 
 
                 sendMessageForMe(sendMessage, apiClient.getQUOTE());
             } else if (update.getMessage().getText().equals("NumberFact")) {
                 saveDataForMe("NUMBER_FACT");
                 sendMessageForMe(sendMessage, apiClient.getNUMBER_FACT());
+                this.numberCunt++;
 
 
             } else if (update.getMessage().getText().equals("Activity")) {
                 saveDataForMe("ACTIVITY");
                 sendMessageForMe(sendMessage, apiClient.getACTIVITY());
+                this.activityCunt++;
             }
             message.setText("chose");
             message.setChatId(chatId);
@@ -88,6 +103,8 @@ public class Bot extends TelegramLongPollingBot {
         activity.add(sendMessage);
         userNames.add(userName);
         dates.add(date);
+        lastTenactivityForHistory.add(userName+" || "+selectedActivity+" || "+date+" | \n");
+
         popularActivity = findMostFrequentString(activity);
         popularUserName = findMostFrequentString(userNames);
     }
