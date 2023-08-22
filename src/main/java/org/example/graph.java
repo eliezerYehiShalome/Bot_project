@@ -87,6 +87,7 @@ public class graph extends JPanel {
             g.drawImage(img,12,200,this);
             repaint();
         } else {
+
         }
 
 
