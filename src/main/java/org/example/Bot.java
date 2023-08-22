@@ -61,7 +61,7 @@ public class Bot extends TelegramLongPollingBot {
         } else {
             if (update.getMessage().getText().equals("Joke")) {
                 saveDataForMe("JOKE");
-                sendMessageForMe(sendMessage, apiClient.getACTIVITY());
+                sendMessageForMe(sendMessage, apiClient.getJOKE());
                 this.jokeCunt++;
 
 
@@ -103,7 +103,8 @@ public class Bot extends TelegramLongPollingBot {
         activity.add(sendMessage);
         userNames.add(userName);
         dates.add(date);
-        lastTenactivityForHistory.add(userName+" || "+selectedActivity+" || "+date+" | \n");
+        lastTenactivityForHistory.add(userName+" || "+selectedActivity+" || "+date.getTime()+" | \n");
+        Collections.reverse(lastTenactivityForHistory);
 
         popularActivity = findMostFrequentString(activity);
         popularUserName = findMostFrequentString(userNames);
