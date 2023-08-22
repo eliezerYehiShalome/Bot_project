@@ -39,9 +39,8 @@ public class HistoryActivity extends JFrame {
 
         new Thread(() -> {
             while (true) {
-                Collections.reverse(lastTen);
 
-                for (int i = 0; i < labels.length; i++) {
+                for (int i = 0; i < Bot.lastTenactivityForHistory.size(); i++) {
                     if (i < lastTen.size()) {
                         labels[i].setText((i + 1) + ") " + lastTen.get(i));
                     } else {
